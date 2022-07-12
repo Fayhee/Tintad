@@ -40,7 +40,7 @@ public class MintNFT : MonoBehaviour
             Debug.Log("Gas Price: " + gasPrice1);
 
             // private key of account
-            string privateKey = "71d28503b282cb610b9d1714f86cc01e802999c8e81411f6f9fa7ca2c2f8afb9";
+            string privateKey = " ";
             Debug.Log("Account: " + account);
             string transaction = await EVM.CreateTransaction(chain, network, nftResponse.tx.account,
                 nftResponse.tx.to, nftResponse.tx.value, nftResponse.tx.data,
