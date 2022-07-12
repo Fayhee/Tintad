@@ -37,6 +37,7 @@ public class CaptureImage : MonoBehaviour
 
     private void TakePicture()
     {
+        //Make the panel invisible while capturing the NFT
         Panel.SetActive(false);     
         Debug.Log("Button Clicked");
         StartCoroutine(Helper.TakeScreenShot(CallBackOnCamera));
@@ -68,10 +69,12 @@ public class CaptureImage : MonoBehaviour
             nFTMetadata.SetDescription(description);
             nFTMetadata.SetName(theName);
 
-            attribute1.SetAttributes("Green House Fader", "95%");
-            attribute2.SetAttributes("Biodervesity Keeper", "25%");
-            attribute3.SetAttributes("Forester", "13%");
+            //Intatiates different attributes from the NFTstorage.ERC721.Attribute class
+            attribute1.SetAttributes("Green House Fader", "95");
+            attribute2.SetAttributes("Biodervesity Keeper", "25");
+            attribute3.SetAttributes("Forester", "13");
 
+            // set the attributes to a list 
             List<NFTstorage.ERC721.Attribute> attributeList = 
                 new List<NFTstorage.ERC721.Attribute> {attribute1, attribute2, attribute3 };
 
@@ -84,7 +87,7 @@ public class CaptureImage : MonoBehaviour
         }
 
         
-
+        // Make panel visible sfter taking the image
         Panel.SetActive(true);
 
     }

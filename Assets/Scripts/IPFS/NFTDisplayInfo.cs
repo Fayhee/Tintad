@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NFTstorage;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
@@ -13,14 +14,20 @@ public class NFTDisplayInfo : MonoBehaviour
     [SerializeField]
     TMP_Text FMText;
 
+    //This image will be used for the attribute bar of the NFT
+    Image image;
 
-    const string k_DefaultText = "NFT Title: "; 
-    
-
-    
-
-    void Update()
+    void Awake()
     {
+        image = GetComponent<Image>();
+    }
+
+
+
+
+    public void Update()
+    {
+        //If the Metadat from IPFS was retrieved successfully, assign the values to variables
         if (M_Data.DataCaptured)
         {
             FMText.text = M_Data.GetName().ToString();
@@ -31,10 +38,12 @@ public class NFTDisplayInfo : MonoBehaviour
             string trait = nAttributes[0].trait_type;
             string value = nAttributes[0].value.ToString();
 
-            Debug.Log("trait: " + trait);
-            Debug.Log("value: " + value);
+            int value1 = int.Parse(value);
 
-            
+            // this will show the level of the attributes
+            image.fillAmount = value1;
+
+
         }
 
         

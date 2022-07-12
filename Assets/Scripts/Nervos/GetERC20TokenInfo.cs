@@ -28,6 +28,7 @@ public class GetERC20TokenInfo : MonoBehaviour
         Debug.Log(symbol);
 
         string name = await ERC20.Name(chain, network, contract, rpc);
+        //This method Retrieves the token balance oh DongoPiks
         tokenName.text = name;
         tokenName2.text = name;
         Debug.Log(name);

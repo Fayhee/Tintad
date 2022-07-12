@@ -22,6 +22,8 @@ public class GetBalance : MonoBehaviour
 
     public void ReadBalance()
     {
+
+    //This class retrieves the user's account from firebase and gets the balance of the token
         auth = FirebaseAuth.DefaultInstance;
         DBreference = FirebaseDatabase.DefaultInstance.RootReference;
         User = auth.CurrentUser;

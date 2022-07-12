@@ -5,12 +5,14 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
 using NFTstorage;
+using TMPro;
 using NFTstorage.ERC721;
 using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class NFTData : MonoBehaviour
 {
+    //This class receives a string of CID from IPFS
     string path;
     
     TheData m_Data;
@@ -21,14 +23,17 @@ public class NFTData : MonoBehaviour
         get => m_DataCaptured;
     }
 
-    void OnEnable()
+    public TMP_InputField theCid;
+
+    public void  NFTMetadata()
     {
         StartCoroutine(GetData());
     }
 
     IEnumerator GetData()
     {
-        path = Helper.GenerateGatewayPath("https://" + "bafkreigbkm7p5gim36kwmpevtl3ceo6iq27hkg2jygyo6dbr4wwt66xm5m",
+        string cid = theCid.text;
+        path = Helper.GenerateGatewayPath("https://" + cid,
                Constants.GatewaysSubdomain[0], true);
         string url = path;
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
@@ -41,6 +46,7 @@ public class NFTData : MonoBehaviour
             }
             else
             {
+                //Convert the NFT MetaData from IPFS to a JSON File
                 m_Data = JsonConvert.DeserializeObject<TheData>(webRequest.downloadHandler.text);
                 m_DataCaptured = true;
                 Debug.Log("Data captured successfully");
@@ -48,6 +54,7 @@ public class NFTData : MonoBehaviour
         }
     }
 
+    //Get the name of the NFT
     public string GetName()
     {
         if (m_DataCaptured)
@@ -60,6 +67,7 @@ public class NFTData : MonoBehaviour
         }
     }
 
+    //Get the descritption of the NFT
     public string GetDescription()
     {
         if (m_DataCaptured)
@@ -72,6 +80,7 @@ public class NFTData : MonoBehaviour
         }
     }
 
+    //Get the image of the NFT
     public string GetImage()
     {
         if (m_DataCaptured)
@@ -86,7 +95,7 @@ public class NFTData : MonoBehaviour
 
 
 
-
+    //Get the list of the attributes of the NFT
     public List<NFTstorage.ERC721.Attribute> GetAttributes()
     {
         if (m_DataCaptured)

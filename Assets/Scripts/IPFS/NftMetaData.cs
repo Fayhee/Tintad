@@ -114,6 +114,7 @@ namespace NFTstorage.ERC721
         // the value of the trait. Not optional.
         public object value;
 
+        // I added a method that you can use to set the attribute fields
         public void SetAttributes(string traitType, object theValue)
         {
             trait_type = traitType;

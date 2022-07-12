@@ -307,9 +307,9 @@ public class ScoreData : MonoBehaviour
                 string username = childSnapshot.Child("username").Value.ToString();
                 int kills = int.Parse(childSnapshot.Child("kills").Value.ToString());
                 int deaths = int.Parse(childSnapshot.Child("deaths").Value.ToString());              
-                //string balance = childSnapshot.Child("balance").Value.ToString();
+                string balance = childSnapshot.Child("balance").Value.ToString();
 
-                string balance = "5";
+                
 
 
 
