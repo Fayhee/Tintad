@@ -153,7 +153,7 @@ public class ScoreData : MonoBehaviour
     public void UserDataButon()
     {
         accountText.text = User.DisplayName;
-        UIManager.instance.UserDataScreen(); // Change to user data UI
+        UIManager1.instance.UserDataScreen(); // Change to user data UI
        
         
     }
@@ -298,7 +298,7 @@ public class ScoreData : MonoBehaviour
             //Destroy any existing scoreboard elements
             foreach (Transform child in scoreboardContent.transform)
             {
-                Destroy(child.gameObject);
+               // Destroy(child.gameObject);
             }
 
             //Loop through every users UID
@@ -307,9 +307,11 @@ public class ScoreData : MonoBehaviour
                 string username = childSnapshot.Child("username").Value.ToString();
                 int kills = int.Parse(childSnapshot.Child("kills").Value.ToString());
                 int deaths = int.Parse(childSnapshot.Child("deaths").Value.ToString());              
-                string balance = childSnapshot.Child("balance").Value.ToString();
-                
-              
+                //string balance = childSnapshot.Child("balance").Value.ToString();
+
+                string balance = "5";
+
+
 
                 //Instantiate new scoreboard elements
                 GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
@@ -317,7 +319,7 @@ public class ScoreData : MonoBehaviour
             }
 
             //Go to scoareboard screen
-            UIManager.instance.ScoreboardScreen();
+            UIManager1.instance.ScoreboardScreen();
         }
 
         

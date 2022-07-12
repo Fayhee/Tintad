@@ -16,7 +16,7 @@ public class ScoreElement : MonoBehaviour
         usernameText.text = _username;
         killsText.text = _kills.ToString();
         deathsText.text = _deaths.ToString();
-        //tokenText.text = _token;
+        tokenText.text = _token;
     }
 
 }
