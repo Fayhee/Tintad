@@ -38,9 +38,27 @@ public class GetBalance : MonoBehaviour
             Debug.Log("Nothing");
         }
 
-        if (balanceOf != null) balance1 = balanceOf.ToString();
+         if (balanceOf != null) balance1 = balanceOf.ToString();
+        
+        //Get the length 0f the string
+        int count = 0;
+        for (int i = 0; i < balance1.Length; i++)
+        {
+            if (balance1[i] != ' ')
+            {
+                count++;
+            }
+        }
 
-        string balance = balance1.Substring(0, 5);
+       // subtract the ERC20 18 standard zeros
+        int length = count - 18;
+        
+        
+        Debug.Log(balanceOf);
+        Debug.Log(count);
+
+        //split the string into two to get the balance to display
+        string balance = balance1.Substring(0, length);
         tokenField.text = balance;
         StartCoroutine(UpdateBalance(int.Parse(balance)));
     }
